@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="/Portfolio_POO/src/main/resources/static/CSS/style.css">
+  <title>Car</title>
+</head>
+<body>
+  <header>
+    <h1>Car Store</h1>
+    <nav>
+      <a href="#catalogo" onclick="showSection('catalogo')">Catálogo</a>
+      <a href="#resultadoPesquisa" onclick="showSection('resultadoPesquisa')">Pesquisar</a>
+      <a href="#novoCarro" onclick="showSection('novoCarro')">Novo Carro</a>
+      <a href="#editarCarro" onclick="showSection('editarCarro')">Editar Carro</a>
+      <a href="#excluirCarro" onclick="showSection('excluirCarro')">Excluir Carro</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <!-- Slider -->
+    <div class="slider-container">
+      <h2>Destaques da Loja</h2>
+      <div id="slider" class="slider-container"></div>
+    </div>
+
+    <!-- Catálogo -->
+    <div id="catalogo" class="catalogo hidden"></div>
+
+    <!-- Pesquisar -->
+    <section id="resultadoPesquisa" class="hidden">
+      <h2>Pesquisar Carro</h2>
+      <form onsubmit="event.preventDefault(); pesquisarCarro();">
+        <input type="text" id="inputPesquisa" placeholder="Digite o nome, modelo ou classe do carro" required />
+        <button type="submit">Pesquisar</button>
+      </form>
+      <div id="areaResultados"></div>
+    </section>
+
+    <!-- Novo Carro -->
+    <div id="novoCarro" class="hidden">
+        <h2>Adicionar Novo Carro</h2>
+        <form id="formNovoCarro">
+            <input type="text" id="nome" placeholder="Nome" required>
+            <select id="SelectMarca" required>
+                <option value="">Selecione uma marca</option>
+            </select>
+            <input type="text" id="modelo" placeholder="Modelo" required>
+            <input type="number" id="preco" placeholder="Preço" required>
+            <input type="text" id="cor" placeholder="Cor" required> <!-- CAMPO ADICIONADO -->
+            <select id="classe" required>
+                <option value="hatch">Hatch</option>
+                <option value="sedan">Sedan</option>
+                <option value="picape">Picape</option>
+                <option value="suv">SUV</option>
+            </select>
+            <input type="number" id="ano" placeholder="Ano" required>
+            <input type="text" id="foto" placeholder="URL da Foto" required>
+            <button type="submit">Adicionar Carro</button>
+        </form>
+    </div>
+
+
+<!-- Editar Carro -->
+<div id="editarCarro" class="hidden">
+    <h2>Editar Carro</h2>
+    <form id="formEditarCarro">
+        <input type="number" id="editId" placeholder="ID do Carro" required>
+        <input type="text" id="editNome" placeholder="Novo Nome">
+        <select id="editMarca" required>
+            <option value="">Selecione uma marca</option>
+        </select>
+        <input type="text" id="editModelo" placeholder="Novo Modelo">
+        <input type="number" id="ano" placeholder="Ano" required>
+        <input type="number" id="editPreco" placeholder="Novo Preço">
+        <input type="text" id="editCor" placeholder="Nova Cor"> <!-- CAMPO ADICIONADO -->
+        <input type="text" id="foto" placeholder="URL da Foto" required>
+        
+        <select id="classe" required>
+            <option value="hatch">Hatch</option>
+            <option value="sedan">Sedan</option>
+            <option value="picape">Picape</option>
+            <option value="suv">SUV</option>
+        </select>
+        <button onclick="carregarFormularioEditar()">Editar</button>
+    </form>
+</div>
+
+    <!-- Excluir Carro -->
+    <div id="excluirCarro" class="hidden">
+      <h2>Excluir Carro</h2>
+      <form id="formExcluirCarro">
+        <input type="number" id="excluirId" placeholder="ID do Carro" required>
+        <button type="submit">Excluir</button>
+      </form>
+    </div>
+  </div>
+
+  <!--Modal de Compra -->
+  
+  <div id="modalCompra" class="modal hidden">
+  <div class="modal-content">
+    <span class="close-button" onclick="fecharModal()">&times;</span>
+    <h2>Detalhes do Carro</h2>
+    <div id="modalDetalhes"></div>
+    <div id="modalAcoes"></div>
+  </div>
+</div>
+
+
+  <script src="/Portfolio_POO/src/main/resources/static/Script/script.js"></script>
+</body>
+</html>
